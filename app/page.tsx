@@ -4,39 +4,18 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Heart, Star, Calendar, Users, Gift, MapPin, Phone, Mail, Instagram, Facebook } from "lucide-react"
+import { HeroVideo } from "@/components/hero-video"
 
 export default function DanceStudioPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section with Video Background */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          poster="/elegant-dance-studio-interior-with-mirrors-and-bal.png"
-          onError={(e) => {
-            // Fallback to background image if video fails
-            const target = e.target as HTMLVideoElement
-            target.style.display = "none"
-            const parent = target.parentElement
-            if (parent) {
-              parent.style.backgroundImage = "url(/elegant-dance-studio-interior-with-mirrors-and-bal.png)"
-              parent.style.backgroundSize = "cover"
-              parent.style.backgroundPosition = "center"
-            }
-          }}
-        >
-          <source src="/placeholder.mp4" type="video/mp4" />
-          {/* Fallback for browsers that don't support video */}
-          <img
-            src="/elegant-dance-studio-interior-with-mirrors-and-bal.png"
-            alt="Studio tańca"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </video>
+        <HeroVideo
+          videoSrc="/placeholder.mp4"
+          posterSrc="/elegant-dance-studio-interior-with-mirrors-and-bal.png"
+          alt="Studio tańca"
+        />
         <div className="absolute inset-0 video-overlay"></div>
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
           <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">
