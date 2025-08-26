@@ -10,10 +10,31 @@ export default function DanceStudioPage() {
     <div className="min-h-screen bg-background">
       {/* Hero Section with Video Background */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <video autoPlay muted loop className="absolute inset-0 w-full h-full object-cover">
-          <source
-            src="/placeholder.mp4?height=1080&width=1920&query=elegant dance studio with women dancing ballet and contemporary"
-            type="video/mp4"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          poster="/elegant-dance-studio-interior-with-mirrors-and-bal.png"
+          onError={(e) => {
+            // Fallback to background image if video fails
+            const target = e.target as HTMLVideoElement
+            target.style.display = "none"
+            const parent = target.parentElement
+            if (parent) {
+              parent.style.backgroundImage = "url(/elegant-dance-studio-interior-with-mirrors-and-bal.png)"
+              parent.style.backgroundSize = "cover"
+              parent.style.backgroundPosition = "center"
+            }
+          }}
+        >
+          <source src="/placeholder.mp4" type="video/mp4" />
+          {/* Fallback for browsers that don't support video */}
+          <img
+            src="/elegant-dance-studio-interior-with-mirrors-and-bal.png"
+            alt="Studio tańca"
+            className="absolute inset-0 w-full h-full object-cover"
           />
         </video>
         <div className="absolute inset-0 video-overlay"></div>
